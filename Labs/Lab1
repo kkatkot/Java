@@ -1,0 +1,23 @@
+public class Main {
+    public static void main(String[] args) {
+
+        final int a = 1;
+        final int b = 1;
+        final int n = 10;
+        final int m = 9;
+        final int C = 0;
+        double S = 0.0;
+
+        if ( C <= n && C >= a){
+            System.out.print("Error! Divising by zero");
+            return;
+
+        }
+        else for (char i = (char) a; i <= n; i++){
+            for (char j = (char) b; j<=m; j++){
+                S += (((double)i % j) / (i +C));
+            }
+        }
+        System.out.println("Result: " +S);
+    }
+}
