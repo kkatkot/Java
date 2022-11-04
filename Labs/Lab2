@@ -1,0 +1,66 @@
+/**
+ *
+ * C5 = 2  +
+ * C7 = 4 long type
+ * C11 = 7
+ *
+ */
+public class Main {
+    public static void main(String[] args) {
+
+        int a[][]={{5,3,4},{2,4,3},{3,4,5}};
+        int b[][]={{1,3,4},{2,4,3},{1,2,4}};
+        int [][] arrf =new int[3][3];
+
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                arrf [i][j]=a[i][j]+b[i][j];
+                System.out.print(arrf[i][j]+" ");
+            }
+            System.out.println();
+        }
+        int indexOdd = 0;
+        int indexEven = 0;
+        long [] evenNums = new long[(arrf[0].length/2)*arrf.length];
+        long [] oddNums = new long[((arrf[0].length%2)+(arrf[0].length/2))*arrf.length];
+
+        for(int i = 0; i < arrf.length; i++) {
+            for	(int j = 0; j < arrf[i].length; j++) {
+                if((j+1)%2==0) {
+                    evenNums[indexEven++] = arrf[i][j];
+                    System.out.println(arrf[i][j]);
+                }
+                if((j+1)%2!=0) {
+                    oddNums[indexOdd++] = arrf[i][j];
+                }
+            }
+        }
+
+        for(int i = 0; i < indexOdd; i++) {
+            oddNums[i] = bubbleSort(indexOdd, oddNums)[i];
+        }
+        for(int i = 0; i < indexEven; i++) {
+            evenNums[i] = bubbleSort(indexEven, evenNums)[i];
+        }
+
+        System.out.println("\nNums from even columns: Sum = "+evenNums[0]+"+"+evenNums[1]+" = "+(evenNums[0]+evenNums[1]));
+        System.out.println("Nums form odd columns: Sum = "+oddNums[indexOdd-2]+"+"+oddNums[indexOdd-1]+" = "+(oddNums[indexOdd-2]+oddNums[indexOdd-1]));
+
+    }
+    static long[] bubbleSort(int index, long [] arr) {
+        boolean isSorted = false;
+        while(!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < index-1; i++) {
+                if(arr[i] > arr[i+1]){
+                    isSorted = false;
+                    long temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+}
+
