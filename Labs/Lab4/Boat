@@ -1,0 +1,47 @@
+import java.util.Comparator;
+
+public class Boat{
+    protected String name;
+    protected int year;
+    private int number;
+    private int payload;
+    private int price;
+
+    public Boat(String name, int year, int number, int payload, int price){
+        this.name = name;
+        this.year = year;
+        this.number = number;
+        this.payload = payload;
+        this.price = price;
+    }
+    public String name(){
+        return name;
+    }
+    public int year(){
+        return year;
+    }
+    public int getyear(){
+        return year;
+    }
+    public int getpayload(){
+        return payload;
+    }
+    public int getprice(){
+        return price;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Boat: " +
+                "name = '" + name + '\'' +
+                ", year = '" + year + '\'' +
+                ", number = '" + number + '\'' +
+                ", payload = " + payload +
+                ", price = " + price;
+    }
+    public static Comparator<Boat> sortCountOfYear = Comparator.comparingDouble(Boat::getyear).reversed();
+
+
+
+}
