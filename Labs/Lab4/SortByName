@@ -1,0 +1,13 @@
+import java.util.Comparator;
+
+// Helper class implementing Comparator interface
+class SortByName implements Comparator<Boat> {
+ 
+    // Method
+    // Sorting in ascending order of name
+    public int compare(Boat a, Boat b)
+    {
+ 
+        return a.name.compareTo(b.name);
+    }
+}
