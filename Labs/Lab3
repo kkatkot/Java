@@ -1,0 +1,72 @@
+/**
+ *
+ * String
+ * Sorting by count of vowel
+ *
+ */
+import java.util.*;
+import java.lang.*;
+
+class Lab3{
+
+    static class pair
+    {
+        int first;
+        String second;
+        pair(int first,String second)
+        {
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    // Checking the Vowel
+    static boolean isVowel(char ch)
+    {
+        ch = Character.toUpperCase(ch);
+        return (ch == 'A' || ch == 'E' ||
+                ch == 'I' || ch == 'O' ||
+                ch == 'U');
+    }
+
+    static int countVowels(String str)
+    {
+        int count = 0;
+        for(int i = 0; i < str.length(); i++)
+
+            // Check for vowel
+            if (isVowel(str.charAt(i)))
+                ++count;
+        return count;
+    }
+
+    // Function to sort the array according to
+// the number of the vowels
+    static void sortArr(String arr[], int n)
+    {
+
+        ArrayList<pair> vp = new ArrayList<>();
+
+        for(int i = 0; i < n; i++)
+        {
+            vp.add(new pair(countVowels(arr[i]),
+                    arr[i]));
+        }
+
+        Collections.sort(vp, (a, b) -> a.first - b.first);
+
+        for(int i = 0; i < vp.size(); i++)
+            System.out.print(vp.get(i).second + " ");
+    }
+
+    // Example
+    public static void main(String[] args)
+    {
+        String arr[] = { "lmn", "hello",
+                "lab", "via" };
+        int n = arr.length;
+
+        sortArr(arr, n);
+    }
+}
+
