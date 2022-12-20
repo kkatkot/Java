@@ -1,0 +1,12 @@
+
+ // Helper class implementing Comparator interface
+// class SortByYear implements Comparator<Boat> {
+
+import java.util.Comparator;
+
+public class SortByYear implements Comparator<Boat> {
+    @Override
+    public int compare(Boat a, Boat b) {
+        return a.getyear()-b.getyear();
+    }
+}
